@@ -1,17 +1,19 @@
-import React from 'react';
-import { Outlet } from 'react-router';
+import React from "react";
+import { Outlet } from "react-router";
+import Navbar from "../components/shared/Navbar";
+import Footer from "../components/shared/Footer";
 
 const Root = () => {
   return (
     <>
       <header>
-
+        <Navbar />
       </header>
-      <main className='container mx-auto px-4 md:px-6 lg:px-8'>
+      <main className="container mx-auto px-4 md:px-6 lg:px-8">
         <Outlet />
       </main>
       <footer>
-
+        <Footer />
       </footer>
     </>
   );
