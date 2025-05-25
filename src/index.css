@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+a.active {
+    color: red;
+  }
+  a.pending {
+    color: blue;
+  }
+ 
+  
