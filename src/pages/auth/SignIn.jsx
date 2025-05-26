@@ -7,6 +7,8 @@ import { FirebaseAuthContext } from "../../provider/FirebaseAuthContext";
 import Swal from "sweetalert2";
 import { MdLogin } from "react-icons/md";
 import Spinner from "../../components/ui/Spinner";
+import Lottie from "lottie-react";
+import signIn from "../../assets/lotti/signIn.json";
 
 const inputBase =
   "w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content";
@@ -109,10 +111,9 @@ const SignIn = () => {
     <div className="flex gap-4 flex-col md:flex-row justify-center items-center max-w-5xl">
       <title>Sign In || Career Code</title>
       <div className="flex-1">
-        <DotLottieReact
-          src="https://lottie.host/33baafdb-458c-4bde-ac78-8f6fc29efe18/wc1rzpJe2S.lottie"
-          loop
-          autoplay
+        <Lottie
+          animationData={signIn}
+          className="w-full h-[200px] md:h-[300px]"
         />
       </div>{" "}
       <div className="flex-1 max-w-md p-6 bg-base-100 rounded shadow border-2 border-secondary">
@@ -148,7 +149,7 @@ const SignIn = () => {
             />
             <Link
               to="/reset-password"
-              className="text-xs text-amber-600 underline"
+              className="text-xs text-primary underline"
             >
               Forget Password
             </Link>
@@ -163,7 +164,7 @@ const SignIn = () => {
             Sign In
           </Button>
         </form>
-        <p className="divider divider-warning">OR</p>
+        <p className="divider">OR</p>
         <Button
           onClick={handleSignInWithGoogle}
           variant="outline"
@@ -174,7 +175,7 @@ const SignIn = () => {
         </Button>{" "}
         <p className="text-sm mt-4 text-base-content">
           Don&apos;t have an account?{" "}
-          <Link to="/signUp" className="text-amber-600 underline">
+          <Link to="/signUp" className="text-primary underline">
             Sign up
           </Link>
         </p>

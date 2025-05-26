@@ -5,9 +5,10 @@ import { Link, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { FirebaseAuthContext } from "../../provider/FirebaseAuthContext";
 import { FcGoogle } from "react-icons/fc";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { GiArchiveRegister } from "react-icons/gi";
 import Spinner from "../../components/ui/Spinner";
+import signUp from "../../assets/lotti/signUp.json";
+import Lottie from "lottie-react";
 
 const inputBase =
   "w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content";
@@ -182,16 +183,7 @@ const SignUp = () => {
     <div className="flex gap-4 flex-col md:flex-row justify-center items-center max-w-5xl">
       <title>Sign Up || Career Code</title>
       <div className="flex-1">
-        <DotLottieReact
-          src="https://lottie.host/a90ff9b8-cd22-4529-a711-c0b7d3f147c4/WduH1EXw54.lottie"
-          loop
-          autoplay
-        />
-        <DotLottieReact
-          src="https://lottie.host/33baafdb-458c-4bde-ac78-8f6fc29efe18/wc1rzpJe2S.lottie"
-          loop
-          autoplay
-        />
+        <Lottie animationData={signUp} className="w-full h-[300px]"></Lottie>
       </div>{" "}
       <form
         onSubmit={handleSignUp}
@@ -275,7 +267,7 @@ const SignUp = () => {
         <Button type="submit" className="mt-6 w-full">
           Sign Up
         </Button>
-        <p className="divider divider-warning">OR</p>
+        <p className="divider">OR</p>
         <Button
           onClick={handleSingInWithGoogle}
           variant="outline"
@@ -286,7 +278,7 @@ const SignUp = () => {
         </Button>{" "}
         <p className="text-sm mt-4 text-base-content">
           Already have an account?{" "}
-          <Link to="/signIn" className="text-amber-600 underline">
+          <Link to="/signIn" className="text-primary underline">
             Sign In
           </Link>
         </p>

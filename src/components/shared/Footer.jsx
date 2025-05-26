@@ -18,8 +18,7 @@ const Footer = () => {
         <div>
           <h2 className="text-2xl font-bold text-primary mb-3">Career Code</h2>
           <p className="text-sm">
-            Your daily dose of delicious. Discover, share, and enjoy
-            mouth-watering recipes anytime.
+            Discover, Search, share, and enjoy with Career Code.
           </p>
         </div>
 
@@ -68,7 +67,7 @@ const Footer = () => {
         {/* Newsletter */}
         <div>
           <h3 className="text-lg font-semibold mb-3">Subscribe</h3>
-          <p className="text-sm mb-3">Get the best recipes every week!</p>
+          <p className="text-sm mb-3">Get the best Job news every week!</p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <input
               type="email"

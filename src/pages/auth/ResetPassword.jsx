@@ -3,8 +3,9 @@ import { Link } from "react-router";
 import { FirebaseAuthContext } from "../../provider/FirebaseAuthContext";
 import Button from "../../components/ui/Button";
 import Swal from "sweetalert2";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { MdLockReset } from "react-icons/md";
+import resetAnimation from "../../assets/lotti/reset-password.json";
+import Lottie from "lottie-react";
 
 const ResetPassword = () => {
   const { resetPassword } = useContext(FirebaseAuthContext);
@@ -62,11 +63,10 @@ const ResetPassword = () => {
   return (
     <div className="flex gap-4 flex-col md:flex-row justify-center items-center max-w-5xl">
       <div>
-        <DotLottieReact
-          src="https://lottie.host/51f5308c-206b-417f-881d-aa04e13b5e0f/ed3vyy5La9.lottie"
-          loop
-          autoplay
-        />
+        <Lottie
+          animationData={resetAnimation}
+          className="w-full h-[200px] md:h-[300px]"
+        ></Lottie>
       </div>
       <div className="bg-base-100 rounded p-6 sm:p-8 md:p-10 w-full max-w-md border-2 border-secondary">
         <h2 className="text-2xl md:text-3xl font-semibold mb-6 flex justify-center items-center gap-3">
@@ -100,10 +100,7 @@ const ResetPassword = () => {
           {/* Redirect to Login */}
           <div className="mt-2 text-center text-sm">
             Remember your password?{" "}
-            <Link
-              to="/signin"
-              className="text-primary underline font-medium"
-            >
+            <Link to="/signin" className="text-primary underline font-medium">
               Sign In
             </Link>
           </div>
