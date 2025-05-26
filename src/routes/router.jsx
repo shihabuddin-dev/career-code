@@ -4,6 +4,9 @@ import Home from "../pages/home/Home";
 import SignIn from "../pages/auth/SignIn";
 import SignUp from "../pages/auth/SignUp";
 import ResetPassword from "../pages/auth/ResetPassword";
+import JobDetails from "../pages/jobDetails/JobDetails";
+import PrivateRoutes from "./PrivateRoutes";
+import JobApply from "../pages/jobApply/JobApply";
 
 const router = createBrowserRouter([
   {
@@ -15,19 +18,27 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/jobs"),
         Component: Home,
       },
+      {
+        path: "/jobs/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/jobs/${params.id}`),
+        Component: JobDetails,
+      },
+
       { path: "/signin", Component: SignIn },
       { path: "/signup", Component: SignUp },
       { path: "/reset-password", Component: ResetPassword },
       // { path: '/blogs', Component: Blogs },
 
       // private routes
-      // {
-      //     path: '/profile',
-      //     element:
-      //         <PrivateRoutes>
-      //             <Profile />
-      //         </PrivateRoutes>
-      // },
+      {
+        path: "/job-apply/:id",
+        element: (
+          <PrivateRoutes>
+            <JobApply />
+          </PrivateRoutes>
+        ),
+      },
     ],
   },
 ]);

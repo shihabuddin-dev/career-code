@@ -90,8 +90,7 @@ const TrendingJobsCard = ({ job }) => {
 
       {/* Action Button */}
       <div className="px-4 pb-4">
-        <Link to={`job/${_id}`}>
-          {" "}
+        <Link to={`jobs/${_id}`}>
           <Button> View Details</Button>
         </Link>
       </div>

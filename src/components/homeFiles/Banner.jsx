@@ -47,15 +47,8 @@ const Banner = () => {
           Discover thousands of opportunities and land your dream job with our
           seamless platform. Start your journey today!
         </motion.p>
-        <motion.button
-          whileHover={{
-            scale: 1.08,
-            backgroundColor: "#7c3aed",
-            color: "#fff",
-          }}
-        >
-          <Button className="md:py-2"> Get Started</Button>
-        </motion.button>
+
+        <Button className="md:py-2"> Get Started</Button>
       </div>
       {/* Images Section */}
       <div className="flex-1 z-10 flex flex-col items-center space-y-4">
