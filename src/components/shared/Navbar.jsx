@@ -131,17 +131,21 @@ const Navbar = () => {
                 className="w-9 h-9 rounded-full border border-secondary"
               />
               <div
-                className={`absolute right-0 mt-2 w-40 bg-base-100 border border-primary rounded-md shadow-lg transition-opacity duration-200 ${
+                className={`absolute right-0 mt-2 w-40 bg-base-100 border border-primary text-primary rounded-md border-dashed shadow-lg transition-opacity duration-200 ${
                   showDropdown ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
-                <p className="px-4 py-2 text-sm font-medium text-primary">
+                <p className="px-4 py-2 text-sm font-medium ">
                   {user?.displayName}
                 </p>
-                <hr className="text-primary" />
+                <hr className="text-primary border-dashed" />
+                <Link to="/my-profile">
+                  <p className="px-4 py-2 text-sm font-medium "> My Profile</p>
+                </Link>
+                <hr className=" border-dashed" />
                 <button
                   onClick={handleLogOut}
-                  className="flex items-center gap-2 px-4 py-2 text-sm text-primary w-full text-left cursor-pointer"
+                  className="flex items-center gap-2 px-4 py-2 text-sm  w-full text-left cursor-pointer"
                 >
                   <FaSignOutAlt /> Logout
                 </button>
@@ -174,7 +178,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed left-0 right-0 top-[64px] z-40 transition-all duration-300 ${
+        className={`lg:hidden fixed left-0 right-0 top-[48px] z-40 transition-all duration-300 ${
           isOpen
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-8 pointer-events-none"

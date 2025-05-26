@@ -62,6 +62,7 @@ const ResetPassword = () => {
 
   return (
     <div className="flex gap-4 flex-col md:flex-row justify-center items-center max-w-5xl">
+      <title>Reset Password || Career Code</title>
       <div>
         <Lottie
           animationData={resetAnimation}
