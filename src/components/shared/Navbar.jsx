@@ -53,9 +53,20 @@ const Navbar = () => {
       }
     });
   };
-
   const linksClass =
     "hover:text-primary text-base-content flex items-center gap-1";
+  const privateData = (
+    <>
+      {user && (
+        <li>
+          <NavLink to="/my-application" className={linksClass}>
+            <FaRegSave />
+            My Application
+          </NavLink>
+        </li>
+      )}
+    </>
+  );
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -106,14 +117,7 @@ const Navbar = () => {
               My Recipes
             </NavLink>
           </li>
-          {user && (
-            <li>
-              <NavLink to="/wishlist" className={linksClass}>
-                <FaRegSave />
-                Wishlist
-              </NavLink>
-            </li>
-          )}
+          {privateData}
         </ul>
 
         {/* Login / Avatar */}
@@ -226,12 +230,12 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/wishlist"
+                to="/my-application"
                 onClick={toggleMenu}
                 className={linksClass}
               >
                 <FaRegSave />
-                Wishlist
+                My Application
               </NavLink>
             </li>
             <li className="space-x-2">
