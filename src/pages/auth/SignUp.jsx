@@ -1,9 +1,34 @@
-import React, { useState } from "react";
+import React, { use, useState, useEffect } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Button from "../../components/ui/Button";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { FirebaseAuthContext } from "../../provider/FirebaseAuthContext";
+import { FcGoogle } from "react-icons/fc";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { GiArchiveRegister } from "react-icons/gi";
+import Spinner from "../../components/ui/Spinner";
+
+const inputBase =
+  "w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content";
 
 const SignUp = () => {
+  const { createUser, setUser, createUserWithGoogle, updateUser, user } =
+    use(FirebaseAuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate(location?.state || "/");
+      }, 100);
+    } else {
+      setLoading(false);
+    }
+  }, [user, location, navigate]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -29,104 +54,220 @@ const SignUp = () => {
     },
   ];
 
-  const handleSignUp = (e) => {
+  // Sign up with email/password
+  const handleSignUp = async (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const { email, password, ...restFormData } = Object.fromEntries(
+    const { name, email, password, photo } = Object.fromEntries(
       formData.entries()
     );
-    console.log(email, password, restFormData);
 
-    // Check if all validations pass
-    const allValid = validations.every((rule) => rule.isValid);
-    if (allValid) {
-      console.log("all valid");
+    if (!name) {
+      Swal.fire({
+        icon: "error",
+        title: "Please enter your name.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
     }
+    if (!photo) {
+      Swal.fire({
+        icon: "error",
+        title: "Please enter your photo URL.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+    if (!email) {
+      Swal.fire({
+        icon: "error",
+        title: "Please enter your email address.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+    if (!password) {
+      Swal.fire({
+        icon: "error",
+        title: "Please enter your password.",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+
+    const allValid = validations.every((rule) => rule.isValid);
+    if (!allValid) {
+      Swal.fire({
+        icon: "error",
+        title: "Password doesn't meet all requirements",
+        showConfirmButton: false,
+        timer: 1600,
+      });
+      return;
+    }
+
+    // Create Firebase user
+    createUser(email, password)
+      .then((userCredential) => {
+        const currentUser = userCredential.user;
+        updateUser({ displayName: name, photoURL: photo });
+
+        setUser({ ...currentUser, displayName: name, photoURL: photo });
+
+        navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          title: "Success!",
+          text: "Your Account created Successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1600,
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        let errorMsg = error.message;
+        if (error.code === "auth/email-already-in-use") {
+          errorMsg =
+            "This email is already registered. Please use a different email or sign in.";
+        }
+        Swal.fire({
+          icon: "error",
+          title: "Registration Failed",
+          text: errorMsg,
+        });
+      });
   };
 
+  // Google Sign In
+  const handleSingInWithGoogle = async () => {
+    createUserWithGoogle()
+      .then((result) => {
+        const currentUser = result.user;
+        // Manually extract user data and set explicitly
+        const userInfo = {
+          uid: currentUser.uid,
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+          photoURL: currentUser.photoURL,
+        };
+
+        setUser(userInfo); // Save to context
+
+        // console.log("Google user info:", userInfo);
+
+        navigate(location?.state ? location.state : "/");
+        Swal.fire({
+          title: "Success!",
+          text: "You are signed in successfully",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1600,
+        });
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+      });
+  };
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
-    <div className="bg-addCoffee">
+    <div className="flex gap-4 flex-col md:flex-row justify-center items-center max-w-5xl">
+      <title>Sign Up || Career Code</title>
+      <div className="flex-1">
+        <DotLottieReact
+          src="https://lottie.host/a90ff9b8-cd22-4529-a711-c0b7d3f147c4/WduH1EXw54.lottie"
+          loop
+          autoplay
+        />
+        <DotLottieReact
+          src="https://lottie.host/33baafdb-458c-4bde-ac78-8f6fc29efe18/wc1rzpJe2S.lottie"
+          loop
+          autoplay
+        />
+      </div>{" "}
       <form
         onSubmit={handleSignUp}
-        className="max-w-md mx-auto p-6 bg-white rounded shadow"
+        className="flex-1 max-w-md p-6 bg-base-100 rounded shadow space-y-2 border-2 border-secondary"
       >
-        <h2 className="text-xl font-semibold mb-4 text-center">Sign Up</h2>
-        <label className="block mb-2 text-sm font-medium">Name</label>
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4 flex justify-center items-center gap-3 text-base-content">
+          <GiArchiveRegister className="text-primary" /> Sign Up
+        </h2>
+        <label className="block mb-2 text-sm font-medium text-base-content">
+          Name
+        </label>
         <input
           type="text"
           name="name"
-          className="w-full border rounded px-3 py-2 mb-4 focus:outline-none"
+          className={inputBase}
           placeholder="Enter your Name"
-          required
+          // required removed to handle validation with SweetAlert
         />
-        <label className="block mb-2 text-sm font-medium">Address</label>
-        <input
-          type="text"
-          name="address"
-          className="w-full border rounded px-3 py-2 mb-4 focus:outline-none"
-          placeholder="Enter your Address"
-          required
-        />
-        <label className="block mb-2 text-sm font-medium">Phone</label>
-        <input
-          type="text"
-          name="phone"
-          className="w-full border rounded px-3 py-2 mb-4 focus:outline-none"
-          placeholder="Enter your Phone"
-          required
-        />
-        <label className="block mb-2 text-sm font-medium">Photo URL</label>
+        <label className="block mb-2 text-sm font-medium text-base-content">
+          Photo URL
+        </label>
         <input
           type="text"
           name="photo"
-          className="w-full border rounded px-3 py-2 mb-4 focus:outline-none"
+          className={inputBase}
           placeholder="Enter your Photo URL"
-          required
+          // required removed to handle validation with SweetAlert
         />
-        <label className="block mb-2 text-sm font-medium">Email address</label>
+        <label className="block mb-2 text-sm font-medium text-base-content">
+          Email address
+        </label>
         <input
           type="email"
           name="email"
-          className="w-full border rounded px-3 py-2 mb-4 focus:outline-none"
+          className={inputBase}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your Email"
-          required
+          // required removed to handle validation with SweetAlert
         />
-
-        <label className="block mb-2 text-sm font-medium">Password</label>
+        <label className="block mb-2 text-sm font-medium text-base-content">
+          Password
+        </label>
         <div className="relative mb-2">
           <input
             type={showPassword ? "text" : "password"}
             name="password"
-            className="w-full border rounded px-3 py-2 focus:outline-none pr-10"
+            className={inputBase}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
-            required
+            // required removed to handle validation with SweetAlert
           />
           <span
-            className="absolute right-3 top-3 cursor-pointer text-gray-600"
+            className="absolute right-3 top-3 cursor-pointer text-base-content/70"
             onClick={togglePassword}
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
-
-        <div className="text-sm mt-4">
+        {/* Password Validation List */}{" "}
+        <div className="text-sm mt-4 text-base-content">
           <p className="font-medium mb-2">Create a password that:</p>
           <ul className="space-y-1">
             {validations.map((rule, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span
                   className={`w-4 h-4 flex items-center justify-center border rounded-sm ${
-                    rule.isValid ? "bg-green-500 text-white" : "border-gray-400"
+                    rule.isValid
+                      ? "bg-green-500 text-white"
+                      : "border-base-300 text-red-500"
                   }`}
                 >
-                  {rule.isValid ? "✓" : ""}
+                  {rule.isValid ? "✓" : "X"}
                 </span>
-                <span>{rule.label}</span>
+                <span className="text-base-content">{rule.label}</span>
               </li>
             ))}
           </ul>
@@ -134,9 +275,18 @@ const SignUp = () => {
         <Button type="submit" className="mt-6 w-full">
           Sign Up
         </Button>
-        <p className="text-sm mt-4">
+        <p className="divider divider-warning">OR</p>
+        <Button
+          onClick={handleSingInWithGoogle}
+          variant="outline"
+          className="w-full mt-3 flex justify-center items-center gap-2"
+        >
+          <FcGoogle className="text-xl" />
+          Sign Up with Google
+        </Button>{" "}
+        <p className="text-sm mt-4 text-base-content">
           Already have an account?{" "}
-          <Link to="/signIn" className="text-blue-600 underline">
+          <Link to="/signIn" className="text-amber-600 underline">
             Sign In
           </Link>
         </p>
