@@ -39,7 +39,7 @@ const Banner = () => {
           to Get Your New Job
         </motion.h1>
         <motion.p
-          className="text-lg md:text-xl max-w-xl"
+          className="text-lg md:text-xl text-gray-600 max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 1 }}
@@ -50,10 +50,11 @@ const Banner = () => {
         <motion.button
           whileHover={{
             scale: 1.08,
+            backgroundColor: "#7c3aed",
             color: "#fff",
           }}
         >
-          <Button className="py-2"> Get Started</Button>
+          <Button className="md:py-2"> Get Started</Button>
         </motion.button>
       </div>
       {/* Images Section */}
