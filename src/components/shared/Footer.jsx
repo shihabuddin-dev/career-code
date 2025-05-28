@@ -32,18 +32,13 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/all-recipes" className="hover:text-secondary">
-                All Recipes
+              <Link to="/my-application" className="hover:text-secondary">
+                My Application
               </Link>
             </li>
             <li>
-              <Link to="/add-recipe" className="hover:text-secondary">
-                Add Recipe
-              </Link>
-            </li>
-            <li>
-              <Link to="/my-recipes" className="hover:text-secondary">
-                My Recipes
+              <Link to="/contact" className="hover:text-secondary">
+                Contact Us
               </Link>
             </li>
           </ul>
@@ -53,10 +48,10 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Contact</h3>
           <ul className="space-y-3 text-sm text-base-content">
             <li className="flex items-center gap-2">
-              <FaEnvelope /> info@traditionalrecipe.com
+              <FaEnvelope /> info@careercode.com
             </li>
             <li className="flex items-center gap-2">
-              <FaPhoneAlt /> +880 1234-567890
+              <FaPhoneAlt /> +880 96784-567890
             </li>
             <li className="flex items-center gap-2">
               <FaMapMarkerAlt /> Bogura, Bangladesh
@@ -72,7 +67,7 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Your email"
-              className="px-4 py-2 rounded-md border border-secondary focus:outline-none focus:ring-1 focus:ring-secondary text-sm w-full"
+              className="w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content"
             />
             <Button type="submit">Subscribe</Button>
           </div>

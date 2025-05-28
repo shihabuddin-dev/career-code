@@ -1,7 +1,9 @@
 import React from "react";
+import { MdDeleteForever } from "react-icons/md";
 
-const ApplicationRow = ({ application, i }) => {
-  const { company_logo, company, title, applicant } = application || {};
+const ApplicationRow = ({ application, i, handleDeleteApplication }) => {
+  const { _id, company_logo, company, title, applicant } = application || {};
+
   return (
     <tr>
       <th>{i + 1}</th>
@@ -19,9 +21,14 @@ const ApplicationRow = ({ application, i }) => {
         </div>
       </td>
       <td>{applicant}</td>
-      <td>Purple</td>
+      <td>Active</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button
+          onClick={() => handleDeleteApplication(_id)}
+          className="text-2xl text-red-500 cursor-pointer"
+        >
+          <MdDeleteForever />
+        </button>
       </th>
     </tr>
   );

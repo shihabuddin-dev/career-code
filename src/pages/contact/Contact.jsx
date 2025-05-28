@@ -31,7 +31,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex gap-6 flex-col md:flex-row justify-center items-center max-w-5xl mx-auto min-h-[80vh]">
+    <div className="flex gap-6 md:gap-24 flex-col md:flex-row justify-center items-center max-w-5xl mx-auto min-h-[80vh]">
       <title>Contact || Career Code</title>
       <div>
         <Lottie
