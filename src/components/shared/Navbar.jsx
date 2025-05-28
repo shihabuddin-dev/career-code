@@ -15,7 +15,7 @@ import Swal from "sweetalert2";
 import { MdLibraryAdd } from "react-icons/md";
 import ThemeToggle from "../ui/ThemeToggle";
 import userLogo from "../../assets/user-logo.png";
-import { FaUsersViewfinder } from "react-icons/fa6";
+import { FaSignsPost, FaUsersViewfinder } from "react-icons/fa6";
 const Navbar = () => {
   const { user, logOutUser } = use(FirebaseAuthContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -58,12 +58,20 @@ const Navbar = () => {
   const privateData = (
     <>
       {user && (
-        <li>
-          <NavLink to="/my-application" className={linksClass}>
-            <FaRegSave />
-            My Application
-          </NavLink>
-        </li>
+        <>
+          <li>
+            <NavLink to="/add-job" className={linksClass}>
+              <FaSignsPost />
+              Add Job
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/my-application" className={linksClass}>
+              <FaClipboardList />
+              My Application
+            </NavLink>
+          </li>
+        </>
       )}
     </>
   );
@@ -111,12 +119,7 @@ const Navbar = () => {
               Recruiters
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/my-recipes" className={linksClass}>
-              <FaClipboardList />
-              My Recipes
-            </NavLink>
-          </li>
+
           {privateData}
         </ul>
 
@@ -220,12 +223,12 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/my-recipes"
+                to="/add-job"
                 onClick={toggleMenu}
                 className={linksClass}
               >
-                <FaClipboardList />
-                My Recipes
+                <FaSignsPost />
+                Add Job
               </NavLink>
             </li>
             <li>
@@ -234,7 +237,7 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={linksClass}
               >
-                <FaRegSave />
+                <FaClipboardList />
                 My Application
               </NavLink>
             </li>

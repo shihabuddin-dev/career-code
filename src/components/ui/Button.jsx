@@ -7,17 +7,17 @@ const Button = ({
   ...props
 }) => {
   let styles =
-    "px-4 py-2 text-sm rounded font-medium transition duration-200 focus:outline-none cursor-pointer ";
+    "px-4 py-1.5 md:py-2 text-sm rounded font-medium transition duration-200 focus:outline-none cursor-pointer ";
 
   if (variant === "primary") {
     styles +=
-      "bg-[#3C65F5] text-white shadow-md hover:bg-[#274bb5] hover:scale-105";
+      "bg-[#3C65F5] text-white shadow-md hover:bg-[#274bb5] hover:scale-103 border-2 border-[#3C65F5]";
   } else if (variant === "secondary") {
     styles +=
       "bg-white text-[#3C65F5] border border-[#3C65F5] hover:bg-[#3C65F5] hover:text-white hover:scale-105 shadow";
   } else if (variant === "outline") {
     styles +=
-      "border-2 border-[#3C65F5] text-[#3C65F5] bg-white hover:bg-indigo-50 hover:scale-105 shadow-sm";
+      "border-2 border-[#3C65F5] text-[#3C65F5] hover:bg-indigo-50 hover:scale-105 shadow-sm";
   } else if (variant === "danger") {
     styles +=
       "bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-md";

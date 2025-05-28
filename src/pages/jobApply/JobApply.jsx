@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import UseAuth from "../../hooks/UseAuth";
 import Button from "../../components/ui/Button";
@@ -12,14 +11,12 @@ const inputBase =
   "w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content";
 
 const JobApply = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const { id } = useParams();
   const { user } = UseAuth();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleApply = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
     const form = e.target;
     const formData = new FormData(form);
@@ -35,7 +32,7 @@ const JobApply = () => {
       .post("http://localhost:3000/applications", application)
       .then((res) => {
         if (res.data.insertedId) {
-          navigate('/my-application')
+          navigate("/my-application");
           Swal.fire({
             icon: "success",
             title: "Application Submitted!",
@@ -56,9 +53,6 @@ const JobApply = () => {
           confirmButtonColor: "#6366f1",
           background: "#f8fafc",
         });
-      })
-      .finally(() => {
-        setIsSubmitting(false);
       });
   };
 
@@ -132,8 +126,8 @@ const JobApply = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full mt-4" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "Submit Application"}
+          <Button type="submit" className="w-full mt-4">
+            Submit Application
           </Button>
         </form>
 

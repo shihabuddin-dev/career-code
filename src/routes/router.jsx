@@ -12,6 +12,7 @@ import Spinner from "../components/ui/Spinner";
 import Contact from "../pages/contact/Contact";
 import FindJobs from "../pages/findJobs/FindJobs";
 import Recruiters from "../pages/recruiters/Recruiters";
+import AddJob from "../pages/addJob/AddJob";
 
 const router = createBrowserRouter([
   {
@@ -32,18 +33,22 @@ const router = createBrowserRouter([
         Component: JobDetails,
       },
       {
-        path: '/contact',
-        Component: Contact
+        path: "/contact",
+        Component: Contact,
       },
       {
-        path: '/find-job',
-        Component: FindJobs
+        path: "/find-job",
+        Component: FindJobs,
       },
       {
-        path: '/Recruiters',
-         hydrateFallbackElement: <Spinner />,
+        path: "/Recruiters",
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("http://localhost:3000/jobs"),
-        Component: Recruiters
+        Component: Recruiters,
+      },
+      {
+        path: "/add-job",
+        Component: AddJob,
       },
 
       { path: "/signin", Component: SignIn },
