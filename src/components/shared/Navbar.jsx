@@ -5,6 +5,7 @@ import {
   FaClipboardList,
   FaHome,
   FaParachuteBox,
+  FaPhoenixFramework,
   FaRegSave,
   FaSignOutAlt,
   FaTimes,
@@ -61,8 +62,14 @@ const Navbar = () => {
         <>
           <li>
             <NavLink to="/add-job" className={linksClass}>
-              <FaSignsPost />
+              <MdLibraryAdd />
               Add Job
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/my-job" className={linksClass}>
+              <FaPhoenixFramework />
+              My Jobs
             </NavLink>
           </li>
           <li>
@@ -93,9 +100,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto py-2 px-4 md:px-6 lg:px-8 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <FaParachuteBox className="w-8 h-8 text-primary" />
-          <span className="text-2xl -ml-1 font-bold text-primary">
-            Career Code
+          <FaParachuteBox className="w-6 h-6 text-primary" />
+          <span className="text-2xl -ml-1 font-bold">
+            Career <span className="text-primary">Code</span>
           </span>
         </Link>
 
@@ -115,7 +122,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink to="/recruiters" className={linksClass}>
-              <MdLibraryAdd />
+              <FaSignsPost />
               Recruiters
             </NavLink>
           </li>
@@ -217,7 +224,7 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={linksClass}
               >
-                <MdLibraryAdd />
+                <FaSignsPost />
                 Recruiters
               </NavLink>
             </li>
@@ -227,8 +234,14 @@ const Navbar = () => {
                 onClick={toggleMenu}
                 className={linksClass}
               >
-                <FaSignsPost />
+                <MdLibraryAdd />
                 Add Job
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/my-job" onClick={toggleMenu} className={linksClass}>
+                <FaPhoenixFramework />
+                My Job
               </NavLink>
             </li>
             <li>

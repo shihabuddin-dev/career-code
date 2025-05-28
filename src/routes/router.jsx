@@ -13,6 +13,7 @@ import Contact from "../pages/contact/Contact";
 import FindJobs from "../pages/findJobs/FindJobs";
 import Recruiters from "../pages/recruiters/Recruiters";
 import AddJob from "../pages/addJob/AddJob";
+import MyPostedJobs from "../pages/myPostedJobs/MyPostedJobs";
 
 const router = createBrowserRouter([
   {
@@ -46,10 +47,6 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/jobs"),
         Component: Recruiters,
       },
-      {
-        path: "/add-job",
-        Component: AddJob,
-      },
 
       { path: "/signin", Component: SignIn },
       { path: "/signup", Component: SignUp },
@@ -70,6 +67,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <MyApplication />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/add-job",
+        element: (
+          <PrivateRoutes>
+            <AddJob />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/my-job",
+        element: (
+          <PrivateRoutes>
+            <MyPostedJobs />
           </PrivateRoutes>
         ),
       },

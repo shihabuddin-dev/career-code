@@ -70,7 +70,7 @@ const AddJob = () => {
       <div className="flex-1  p-6 bg-base-100 rounded shadow border-2 border-secondary">
         <h2 className="text-2xl md:text-3xl font-semibold mb-4 flex justify-center items-center gap-3 text-base-content">
           <MdWork className="text-primary" />
-          Add Job
+          Add New Job
         </h2>
         <form onSubmit={handleSubmit} className="space-y-2">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
