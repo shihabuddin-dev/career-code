@@ -10,6 +10,7 @@ const MyApplication = () => {
 
   return (
     <div className="space-y-8">
+      <h3 className="text-4xl font-semibold text-center">My Application</h3>
       <div className="max-w-3xl mx-auto">
         <ApplicationStatus />
       </div>

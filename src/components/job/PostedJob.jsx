@@ -1,8 +1,8 @@
 import React, { use } from "react";
+import { Link } from "react-router";
 
 const PostedJob = ({ jobsCreatedByPromise }) => {
   const jobs = use(jobsCreatedByPromise);
-  console.log(jobs);
   return (
     <div className="overflow-x-auto mt-8 rounded-box border border-base-content/5 bg-base-100">
       <table className="table">
@@ -10,9 +10,10 @@ const PostedJob = ({ jobsCreatedByPromise }) => {
         <thead>
           <tr>
             <th>No.</th>
-            <th>HR Name</th>
-            <th>Company</th>
-            <th>job Type</th>
+            <th>Job Title</th>
+            <th>Deadline</th>
+            <th>Job Type</th>
+            <th>View Application</th>
           </tr>
         </thead>
         <tbody>
@@ -20,9 +21,12 @@ const PostedJob = ({ jobsCreatedByPromise }) => {
           {jobs?.map((job, i) => (
             <tr key={i}>
               <th>{i + 1}</th>
-              <td>{job.hr_name} </td>
-              <td>{job.company}</td>
+              <td>{job.title} </td>
+              <td>{job.applicationDeadline}</td>
               <td>{job.jobType}</td>
+              <td className="hover:underline text-primary">
+                <Link to={`/applications/${job._id}`}>View Application</Link>
+              </td>
             </tr>
           ))}
         </tbody>

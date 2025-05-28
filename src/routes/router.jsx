@@ -14,6 +14,7 @@ import FindJobs from "../pages/findJobs/FindJobs";
 import Recruiters from "../pages/recruiters/Recruiters";
 import AddJob from "../pages/addJob/AddJob";
 import MyPostedJobs from "../pages/myPostedJobs/MyPostedJobs";
+import ViewApplication from "../pages/viewApplication/ViewApplication";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,17 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <MyPostedJobs />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/applications/:job_id",
+        hydrateFallbackElement: <Spinner />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/applications/job/${params.job_id}`),
+        element: (
+          <PrivateRoutes>
+            <ViewApplication />
           </PrivateRoutes>
         ),
       },
