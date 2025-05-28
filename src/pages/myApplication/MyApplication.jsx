@@ -11,7 +11,6 @@ const MyApplication = () => {
   return (
     <div className="space-y-8">
       <div className="max-w-3xl mx-auto">
-        {" "}
         <ApplicationStatus />
       </div>
 

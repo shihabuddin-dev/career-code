@@ -1,8 +1,10 @@
 import React from "react";
+import UseAuth from "../../hooks/UseAuth";
 
 const ApplicationStatus = () => {
+  const { user } = UseAuth();
   return (
-    <div className="stats shadow">
+    <div className="md:stats shadow">
       <div className="stat">
         <div className="stat-figure text-primary">
           <svg
@@ -20,7 +22,7 @@ const ApplicationStatus = () => {
           </svg>
         </div>
         <div className="stat-title">Total Likes</div>
-        <div className="stat-value text-primary">25.6K</div>
+        <div className="text-2xl md:stat-value text-primary">25.6K</div>
         <div className="stat-desc">21% more than last month</div>
       </div>
 
@@ -41,7 +43,7 @@ const ApplicationStatus = () => {
           </svg>
         </div>
         <div className="stat-title">Page Views</div>
-        <div className="stat-value text-secondary">2.6M</div>
+        <div className="text-2xl md:stat-value  text-secondary">2.6M</div>
         <div className="stat-desc">21% more than last month</div>
       </div>
 
@@ -49,11 +51,11 @@ const ApplicationStatus = () => {
         <div className="stat-figure text-secondary">
           <div className="avatar avatar-online">
             <div className="w-16 rounded-full">
-              <img src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp" />
+              <img src={user.photoURL} />
             </div>
           </div>
         </div>
-        <div className="stat-value">86%</div>
+        <div className="text-2xl md:stat-value ">86%</div>
         <div className="stat-title">Tasks done</div>
         <div className="stat-desc text-secondary">31 tasks remaining</div>
       </div>

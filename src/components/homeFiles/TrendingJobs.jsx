@@ -7,8 +7,8 @@ const TrendingJobs = () => {
   return (
     <div>
       <h3 className="text-4xl font-semibold text-center">Trending Jobs</h3>
-      <div  className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-6">
-        {jobs.map((job) => (
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
+        {jobs?.map((job) => (
           <TrendingJobsCard key={job._id} job={job} />
         ))}
       </div>

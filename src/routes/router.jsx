@@ -8,6 +8,8 @@ import JobDetails from "../pages/jobDetails/JobDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import JobApply from "../pages/jobApply/JobApply";
 import MyApplication from "../pages/myApplication/MyApplication";
+import Spinner from "../components/ui/Spinner";
+import Contact from "../pages/contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -16,14 +18,20 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        hydrateFallbackElement: <Spinner />,
         loader: () => fetch("http://localhost:3000/jobs"),
         Component: Home,
       },
       {
         path: "/jobs/:id",
+        hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/jobs/${params.id}`),
         Component: JobDetails,
+      },
+      {
+        path: '/contact',
+        Component: Contact
       },
 
       { path: "/signin", Component: SignIn },
