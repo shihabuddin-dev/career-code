@@ -15,11 +15,13 @@ import Recruiters from "../pages/recruiters/Recruiters";
 import AddJob from "../pages/addJob/AddJob";
 import MyPostedJobs from "../pages/myPostedJobs/MyPostedJobs";
 import ViewApplication from "../pages/viewApplication/ViewApplication";
+import NotFound from "../pages/notFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <NotFound/>,
     children: [
       {
         index: true,

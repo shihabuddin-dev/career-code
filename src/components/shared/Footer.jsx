@@ -1,106 +1,182 @@
 import React from "react";
 import {
+  FaApple,
+  FaGooglePlay,
   FaFacebookF,
   FaTwitter,
-  FaInstagram,
-  FaEnvelope,
-  FaPhoneAlt,
-  FaMapMarkerAlt,
+  FaLinkedinIn,
 } from "react-icons/fa";
-import Button from "../ui/Button";
 import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-200 text-base-content pt-12 pb-8 border-t border-base-300">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
-        {/* Brand Info */}
-        <div>
-          <h2 className="text-2xl font-bold text-primary mb-3">Career Code</h2>
-          <p className="text-sm">
-            Discover, Search, share, and enjoy with Career Code.
+    <footer className="bg-base-200 text-base-content pt-12 pb-8">
+      {/* Top Section */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-6 gap-10">
+        {/* Logo + Description + Socials */}
+        <div className="md:col-span-1">
+          <h2 className="text-2xl font-bold mb-3">Career Code</h2>
+          <p className="text-sm mb-4">
+            Career Code is the heart of the design community and the best
+            resource to discover and connect with designers and jobs worldwide.
           </p>
+          <div className="flex space-x-3">
+            <a href="#" className="text-xl text-primary">
+              <FaFacebookF />
+            </a>
+            <a href="#" className="text-xl text-primary">
+              <FaTwitter />
+            </a>
+            <a href="#" className="text-xl text-primary">
+              <FaLinkedinIn />
+            </a>
+          </div>
         </div>
 
-        {/* Quick Links */}
+        {/* Resources */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-          <ul className="space-y-2 text-sm text-base-content">
+          <h3 className="text-lg font-semibold mb-3">Resources</h3>
+          <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/" className="hover:text-secondary">
-                Home
+              <Link to="/about" className="hover:underline">
+                About us
               </Link>
             </li>
             <li>
-              <Link to="/my-application" className="hover:text-secondary">
-                My Application
+              <Link to="/team" className="hover:underline">
+                Our Team
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-secondary">
-                Contact Us
+              <Link to="/products" className="hover:underline">
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:underline">
+                Contact
               </Link>
             </li>
           </ul>
         </div>
-        {/* Contact Info */}
+
+        {/* Community */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Contact</h3>
-          <ul className="space-y-3 text-sm text-base-content">
-            <li className="flex items-center gap-2">
-              <FaEnvelope /> info@careercode.com
+          <h3 className="text-lg font-semibold mb-3">Community</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/feature" className="hover:underline">
+                Feature
+              </Link>
             </li>
-            <li className="flex items-center gap-2">
-              <FaPhoneAlt /> +880 96784-567890
+            <li>
+              <Link to="/pricing" className="hover:underline">
+                Pricing
+              </Link>
             </li>
-            <li className="flex items-center gap-2">
-              <FaMapMarkerAlt /> Bogura, Bangladesh
+            <li>
+              <Link to="/credit" className="hover:underline">
+                Credit
+              </Link>
+            </li>
+            <li>
+              <Link to="/faq" className="hover:underline">
+                FAQ
+              </Link>
             </li>
           </ul>
         </div>
 
-        {/* Newsletter */}
+        {/* Quick links */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Subscribe</h3>
-          <p className="text-sm mb-3">Get the best Job news every week!</p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content"
-            />
-            <Button type="submit">Subscribe</Button>
+          <h3 className="text-lg font-semibold mb-3">Quick links</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/ios" className="hover:underline">
+                iOS
+              </Link>
+            </li>
+            <li>
+              <Link to="/android" className="hover:underline">
+                Android
+              </Link>
+            </li>
+            <li>
+              <Link to="/microsoft" className="hover:underline">
+                Microsoft
+              </Link>
+            </li>
+            <li>
+              <Link to="/desktop" className="hover:underline">
+                Desktop
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* More */}
+        <div>
+          <h3 className="text-lg font-semibold mb-3">More</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/privacy" className="hover:underline">
+                Privacy
+              </Link>
+            </li>
+            <li>
+              <Link to="/help" className="hover:underline">
+                Help
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms" className="hover:underline">
+                Terms
+              </Link>
+            </li>
+            <li>
+              <Link to="/faq" className="hover:underline">
+                FAQ
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Download App */}
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Download App</h3>
+          <p className="text-sm mb-4">
+            Download our Apps and get extra 15% Discount on your first Order...!
+          </p>
+          <div className="flex space-x-3">
+            <button className="bg-primary border text-base-100 px-3 py-1.5 rounded flex items-center text-sm">
+              <FaApple className="mr-2" />
+              App
+            </button>
+            <button className="bg-primary border text-base-100 px-3 py-1.5 rounded flex items-center text-sm">
+              <FaGooglePlay className="mr-2" />
+              Google
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom line */}
-      <div className="mt-8 border-t border-base-300 pt-6 text-center text-sm">
-        <p>
-          &copy; {new Date().getFullYear()} Career Code All rights reserved.
-        </p>
-        <div className="flex justify-center mt-3 space-x-4 text-secondary">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaFacebookF size={18} />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaTwitter size={18} />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram size={18} />
-          </a>
+      {/* Bottom Section */}
+      <div className="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-base-400 border-dashed">
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm">
+          <p className="mb-3 md:mb-0">
+            &copy; {new Date().getFullYear()} Career Code all right reserved
+          </p>
+          <div className="flex space-x-4">
+            <Link to="/privacy" className="hover:underline">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="hover:underline">
+              Terms & Conditions
+            </Link>
+            <Link to="/security" className="hover:underline">
+              Security
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

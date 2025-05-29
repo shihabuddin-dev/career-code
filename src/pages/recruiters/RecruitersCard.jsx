@@ -5,9 +5,9 @@ const RecruitersCard = ({ application }) => {
   const { description, company, hr_email, company_logo } = application || {};
   return (
     <div className="bg-base-100 rounded-2xl shadow-lg p-4 sm:p-6 text-center border-t-4 border-[#3C65F5] flex flex-col items-center justify-center h-full">
-      <h2 className="text-2xl sm:text-3xl font-bold text-[#3C65F5] mb-2 flex items-center justify-center gap-2">
+      <h2 className="text-2xl sm:text-3xl font-semibold text-[#3C65F5] mb-2 flex items-center justify-center gap-2">
         <span className="inline-block bg-blue-100 p-2 rounded-full">
-          <FaUserAlt className="text-lg sm:text-xl" />
+          <FaUserAlt className="text-lg " />
         </span>
         Recruiters
       </h2>
