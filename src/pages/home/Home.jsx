@@ -9,8 +9,8 @@ const Home = () => {
     <div className="space-y-10 md:space-y-16">
       <Banner />
       <TrendingJobs />
-      <CareerTips/>
-      <FeaturedCompanies/>
+      <CareerTips />
+      <FeaturedCompanies />
     </div>
   );
 };
