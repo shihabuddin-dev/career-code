@@ -16,24 +16,25 @@ import AddJob from "../pages/addJob/AddJob";
 import MyPostedJobs from "../pages/myPostedJobs/MyPostedJobs";
 import ViewApplication from "../pages/viewApplication/ViewApplication";
 import NotFound from "../pages/notFound/NotFound";
+import MyProfile from "../pages/myprofile/MyProfile";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
         hydrateFallbackElement: <Spinner />,
-        loader: () => fetch("http://localhost:3000/jobs"),
+        loader: () => fetch("https://career-code-server-drab.vercel.app/jobs"),
         Component: Home,
       },
       {
         path: "/jobs/:id",
         hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/jobs/${params.id}`),
+          fetch(`https://career-code-server-drab.vercel.app/jobs/${params.id}`),
         Component: JobDetails,
       },
       {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/Recruiters",
         hydrateFallbackElement: <Spinner />,
-        loader: () => fetch("http://localhost:3000/jobs"),
+        loader: () => fetch("https://career-code-server-drab.vercel.app/jobs"),
         Component: Recruiters,
       },
 
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
       // { path: '/blogs', Component: Blogs },
 
       // private routes
+      {
+        path: "/my-profile",
+        element: (
+          <PrivateRoutes>
+            <MyProfile />
+          </PrivateRoutes>
+        ),
+      },
       {
         path: "/job-apply/:id",
         element: (
@@ -93,7 +102,9 @@ const router = createBrowserRouter([
         path: "/applications/:job_id",
         hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/applications/job/${params.job_id}`),
+          fetch(
+            `https://career-code-server-drab.vercel.app/applications/job/${params.job_id}`
+          ),
         element: (
           <PrivateRoutes>
             <ViewApplication />

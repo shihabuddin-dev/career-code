@@ -8,7 +8,7 @@ const ApplicationList = ({ myApplicationsPromise }) => {
   const [applications, setApplications] = useState(initialApplications);
   const handleDeleteApplication = (id) => {
     axios
-      .delete(`http://localhost:3000/applications/${id}`)
+      .delete(`https://career-code-server-drab.vercel.app/applications/${id}`)
       .then((res) => {
         if (res.data.deletedCount) {
           const remainingApplications = applications.filter(
