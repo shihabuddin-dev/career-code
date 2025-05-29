@@ -12,6 +12,7 @@ const PostedJob = ({ jobsCreatedByPromise }) => {
             <th>No.</th>
             <th>Job Title</th>
             <th>Deadline</th>
+            <th>Count</th>
             <th>Job Type</th>
             <th>View Application</th>
           </tr>
@@ -23,6 +24,7 @@ const PostedJob = ({ jobsCreatedByPromise }) => {
               <th>{i + 1}</th>
               <td>{job.title} </td>
               <td>{job.applicationDeadline}</td>
+              <td>{job.application_count} </td>
               <td>{job.jobType}</td>
               <td className="hover:underline text-primary">
                 <Link to={`/applications/${job._id}`}>View Application</Link>
