@@ -37,6 +37,7 @@ const MyProfile = () => {
   };
   return (
     <div className="flex justify-center items-center min-h-[70vh]">
+      <title>Profile || Career Code</title>
       <div className="card w-full max-w-md bg-base-100 shadow-xl border-t-4 border-primary p-6">
         <div className="flex flex-col items-center gap-3">
           <div className="avatar">

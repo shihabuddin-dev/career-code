@@ -21,6 +21,7 @@ const JobDetails = () => {
   } = useLoaderData();
   return (
     <div className="max-w-3xl mx-auto mt-12 p-8 bg-base-200 rounded-2xl flex flex-col items-center space-y-6">
+      <title>Job Details || Career Code</title>
       <div className="flex flex-col items-center space-y-2">
         <img
           src={company_logo}

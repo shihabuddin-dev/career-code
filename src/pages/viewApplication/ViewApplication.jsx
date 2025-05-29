@@ -6,9 +6,12 @@ const ViewApplication = () => {
   const applications = useLoaderData();
   const handleStatusChange = (e, app_id) => {
     axios
-      .patch(`https://career-code-server-drab.vercel.app/applications/${app_id}`, {
-        status: e.target.value,
-      })
+      .patch(
+        `https://career-code-server-drab.vercel.app/applications/${app_id}`,
+        {
+          status: e.target.value,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
@@ -52,7 +55,7 @@ const ViewApplication = () => {
                   <select
                     onChange={(e) => handleStatusChange(e, application._id)}
                     defaultValue={application.status}
-                    className="select"
+                    className="select w-full border-2 border-base-content/20 px-4 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition duration-200 bg-base-100 text-base-content"
                   >
                     <option disabled={true}>Update Status</option>
                     <option>Pending</option>

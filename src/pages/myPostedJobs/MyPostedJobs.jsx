@@ -9,6 +9,7 @@ const MyPostedJobs = () => {
 
   return (
     <div>
+      <title>My Jobs || Career Code</title>
       <h3 className="text-4xl font-semibold text-center">My Posted Job</h3>
       <Suspense fallback={<Spinner />}>
         <PostedJob jobsCreatedByPromise={jobsCreatedByPromise(user.email)} />
