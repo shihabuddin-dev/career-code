@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const ViewApplication = () => {
   const applications = useLoaderData();
+  
   const handleStatusChange = (e, app_id) => {
     axios
       .patch(
