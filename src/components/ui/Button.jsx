@@ -11,13 +11,13 @@ const Button = ({
 
   if (variant === "primary") {
     styles +=
-      "bg-[#3C65F5] text-white shadow-md hover:bg-[#274bb5] hover:scale-103 border-2 border-[#3C65F5]";
+      "bg-primary text-white shadow-md hover:bg-[#274bb5] hover:scale-103 border-2 border-primary";
   } else if (variant === "secondary") {
     styles +=
-      "bg-white text-[#3C65F5] border border-[#3C65F5] hover:bg-[#3C65F5] hover:text-white hover:scale-105 shadow";
+      "bg-white text-primary border border-primary hover:bg-primary hover:text-white hover:scale-105 shadow";
   } else if (variant === "outline") {
     styles +=
-      "border-2 border-[#3C65F5] text-[#3C65F5] hover:bg-indigo-50 hover:scale-105 shadow-sm";
+      "border-2 border-primary text-primary hover:bg-indigo-50 hover:scale-105 shadow-sm";
   } else if (variant === "danger") {
     styles +=
       "bg-red-600 text-white hover:bg-red-700 hover:scale-105 shadow-md";

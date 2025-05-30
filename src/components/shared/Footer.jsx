@@ -148,11 +148,11 @@ const Footer = () => {
             Download our Apps and get extra 15% Discount on your first Order...!
           </p>
           <div className="flex space-x-3">
-            <button className="bg-primary border text-base-100 px-3 py-1.5 rounded flex items-center text-sm">
+            <button className="bg-primary text-white px-3 py-1.5 rounded flex items-center text-sm">
               <FaApple className="mr-2" />
               App
             </button>
-            <button className="bg-primary border text-base-100 px-3 py-1.5 rounded flex items-center text-sm">
+            <button className="bg-primary text-white px-3 py-1.5 rounded flex items-center text-sm">
               <FaGooglePlay className="mr-2" />
               Google
             </button>
