@@ -3,10 +3,9 @@ import UseAxiosSecure from "./UseAxiosSecure";
 
 const UseApplicationApi = () => {
   const axiosSecure = UseAxiosSecure();
-  const myApplicationsPromise = (email) => {
-    return axiosSecure
-      .get(`/applications?email=${email}`)
-      .then((res) => res.data);
+  const myApplicationsPromise = async (email) => {
+    const res = await axiosSecure.get(`/applications?email=${email}`);
+    return res.data;
   };
   return { myApplicationsPromise };
 };
