@@ -20,3 +20,4 @@ const MyPostedJobs = () => {
 };
 
 export default MyPostedJobs;
+

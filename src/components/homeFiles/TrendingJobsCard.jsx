@@ -31,7 +31,7 @@ const TrendingJobsCard = ({ job }) => {
     : "No deadline";
 
   return (
-    <div className="relative  rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+    <div className="relative rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
       {/* Company Logo and Basic Info */}
       <div className="p-4 flex items-center space-x-4">
         <div className="flex-shrink-0">

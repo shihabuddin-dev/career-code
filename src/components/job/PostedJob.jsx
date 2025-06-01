@@ -30,7 +30,9 @@ const PostedJob = ({ jobsCreatedByPromise }) => {
               <td>{job.application_count} </td>
               <td>{job.jobType}</td>
               <td className="hover:underline text-primary">
-                <Link to={`/applications/${job._id}`}>View Application</Link>
+                <Link to={`/applications/job/${job._id}`}>
+                  View Application
+                </Link>
               </td>
             </tr>
           ))}

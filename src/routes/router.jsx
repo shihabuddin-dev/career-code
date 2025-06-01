@@ -103,7 +103,7 @@ const router = createBrowserRouter([
         hydrateFallbackElement: <Spinner />,
         loader: ({ params }) =>
           fetch(
-            `https://career-code-server-sigma.vercel.app/job/${params.job_id}`
+            `https://career-code-server-sigma.vercel.app/applications/job/${params.job_id}`
           ),
         element: (
           <PrivateRoutes>
