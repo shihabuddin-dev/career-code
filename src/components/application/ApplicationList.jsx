@@ -1,14 +1,15 @@
 import React, { use, useState } from "react";
 import ApplicationRow from "./ApplicationRow";
-import axios from "axios";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const ApplicationList = ({ myApplicationsPromise }) => {
   const initialApplications = use(myApplicationsPromise);
   const [applications, setApplications] = useState(initialApplications);
+
   const handleDeleteApplication = (id) => {
     axios
-      .delete(`http://localhost:3000/${id}`)
+      .delete(`http://localhost:3000/applications/${id}`)
       .then((res) => {
         if (res.data.deletedCount) {
           const remainingApplications = applications.filter(
@@ -23,7 +24,7 @@ const ApplicationList = ({ myApplicationsPromise }) => {
           });
         }
       })
-      .then((error) => {
+      .catch((error) => {
         console.log(error);
       });
   };

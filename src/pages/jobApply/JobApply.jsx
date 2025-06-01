@@ -29,7 +29,7 @@ const JobApply = () => {
     };
 
     axios
-      .post("http://localhost:3000", application)
+      .post("http://localhost:3000/applications", application)
       .then((res) => {
         if (res.data.insertedId) {
           navigate("/my-application");

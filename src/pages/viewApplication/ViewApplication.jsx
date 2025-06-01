@@ -4,15 +4,12 @@ import Swal from "sweetalert2";
 
 const ViewApplication = () => {
   const applications = useLoaderData();
-  
+
   const handleStatusChange = (e, app_id) => {
     axios
-      .patch(
-        `http://localhost:3000/${app_id}`,
-        {
-          status: e.target.value,
-        }
-      )
+      .patch(`https://career-code-server-sigma.vercel.app/${app_id}`, {
+        status: e.target.value,
+      })
       .then((res) => {
         // console.log(res.data);
         if (res.data.modifiedCount) {
