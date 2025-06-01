@@ -8,25 +8,37 @@ const ApplicationList = ({ myApplicationsPromise }) => {
   const [applications, setApplications] = useState(initialApplications);
 
   const handleDeleteApplication = (id) => {
-    axios
-      .delete(`http://localhost:3000/applications/${id}`)
-      .then((res) => {
-        if (res.data.deletedCount) {
-          const remainingApplications = applications.filter(
-            (application) => application._id !== id
-          );
-          setApplications(remainingApplications);
-          Swal.fire({
-            icon: "success",
-            title: "Your Application has been Deleted",
-            showConfirmButton: false,
-            timer: 1500,
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`https://career-code-server-sigma.vercel.app/applications/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              const remainingApplications = applications.filter(
+                (application) => application._id !== id
+              );
+              setApplications(remainingApplications);
+              Swal.fire({
+                icon: "success",
+                title: "Your Application has been Deleted",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          })
+          .catch((error) => {
+            console.log(error);
           });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      }
+    });
   };
   if (!applications.length) {
     return <p className="text-center text-xl">No Applications data Found</p>;

@@ -36,7 +36,7 @@ const AddJob = () => {
 
     // You may want to handle errors here
     axios
-      .post("http://localhost:3000/jobs", jobData)
+      .post("https://career-code-server-sigma.vercel.app/jobs", jobData)
       .then((res) => {
         if (res.data.insertedId) {
           navigate("/");
