@@ -1,9 +1,5 @@
-export const jobsCreatedByPromise = async (email, accessToken) => {
-  const res = await fetch(
-    `https://career-code-server-drab.vercel.app/jobs/applications?email=${email}`,
-    {
-      headers: { authorization: `Bearer ${accessToken}` },
-    }
-  );
-  return await res.json();
-};
+// export const jobsCreatedByPromise = (email, accessToken) => {
+//   return fetch(`http://localhost:3000/jobs/applications?email=${email}`, {
+//     headers: { authorization: `Bearer ${accessToken}` },
+//   }).then((res) => res.json());
+// };

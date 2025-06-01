@@ -19,10 +19,7 @@ const MyApplication = () => {
 
       <Suspense fallback={<Spinner />}>
         <ApplicationList
-          myApplicationsPromise={myApplicationsPromise(
-            user.email,
-            user.accessToken
-          )}
+          myApplicationsPromise={myApplicationsPromise(user.email)}
         />
       </Suspense>
     </div>

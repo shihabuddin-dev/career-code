@@ -8,7 +8,7 @@ const ViewApplication = () => {
   const handleStatusChange = (e, app_id) => {
     axios
       .patch(
-        `https://career-code-server-drab.vercel.app/applications/${app_id}`,
+        `http://localhost:3000/${app_id}`,
         {
           status: e.target.value,
         }

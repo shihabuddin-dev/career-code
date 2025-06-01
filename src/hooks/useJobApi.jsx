@@ -3,9 +3,10 @@ import UseAxiosSecure from "./UseAxiosSecure";
 
 const useJobApi = () => {
   const axiosSecure = UseAxiosSecure();
-  const jobsCreatedByPromise = async (email) => {
-    const res = await axiosSecure.get(`/jobs/applications?email=${email}`);
-    return res.data;
+  const jobsCreatedByPromise = (email) => {
+    return axiosSecure
+      .get(`/jobs/applications?email=${email}`)
+      .then((res) => res.data);
   };
   return { jobsCreatedByPromise };
 };

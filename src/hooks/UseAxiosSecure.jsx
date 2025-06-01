@@ -2,7 +2,7 @@ import axios from "axios";
 import UseAuth from "./UseAuth";
 
 const axiosInstance = axios.create({
-  baseURL: "https://career-code-server-drab.vercel.app",
+  baseURL: "http://localhost:3000",
 });
 
 const UseAxiosSecure = () => {
@@ -12,6 +12,7 @@ const UseAxiosSecure = () => {
     config.headers.authorization = `Bearer ${user.accessToken}`;
     return config;
   });
+  
   // response interceptor
   axiosInstance.interceptors.response.use(
     (response) => {

@@ -11,7 +11,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
-import axios from "axios";
 
 const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
@@ -51,17 +50,6 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      if (currentUser?.email) {
-        const userData = { email: currentUser.email };
-        axios
-          .post("https://career-code-server-drab.vercel.app/jwt", userData, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((error) => console.log(error));
-      }
     });
     return () => {
       unSubscribe();
